@@ -1,9 +1,10 @@
 import React from 'react';
+import ErrorBoundary from "../ErrorBoundary";
 import App from '../App';
 import Header from "../Header";
 import Toc from "../Toc";
 import renderer from 'react-test-renderer';
-import {shallow} from "enzyme";
+import {shallow, mount} from "enzyme";
 import ConfigureEnzymeAdapter from "./ConfigureEnzymeAdapter";
 import {createAppWrapper} from "./TestWrappers";
 
@@ -29,17 +30,18 @@ test("test to validata state for correctness", ()=> {
   expect(typeof(appState.menu)).toBe(typeof([]));
 })
 
-/*test("test to invalidata state for correctness", ()=> {
-  const appState = createAppWrapper().state();
-  //expect(typeof(appState.pgTitle) != typeof("")).toBe(true)
-  if (typeof(appState.pgTitle) != typeof(""))
-  {
-    expect().toThrow("Invalid state object");
-  }
-  //expect(typeof(appState.pgTitle)).not.toBe(typeof(""));
-  //expect(typeof(appState.menu)).not.toBe(typeof([]));
-  //console.log("typeof stuff" + !typeof([]));
-})*/
+test("test to invalidata pgTitle state for correctness", ()=> {
+  const app = shallow(<App></App>);
+  const appState = app.state();
+  appState.pgTitle = 2;
+  
+  const appWrapperwithErrBoundary = shallow(<ErrorBoundary>{app}</ErrorBoundary>);
+  appWrapperwithErrBoundary.simulateError(new TypeError('Invalid state object'));
+  //expect(() => appWrapperwithErrBoundary.state()).toThrow("Invalid state object");
+  const objError = appWrapperwithErrBoundary.state().error;
+  expect(objError.toString()).toContain("Invalid state object");
+  
+})
 
 appComponentTree.children[0].children.forEach(element => {
   //console.log(element);
