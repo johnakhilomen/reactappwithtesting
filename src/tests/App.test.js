@@ -23,6 +23,24 @@ test("test that App renders without errors", ()=>{
   expect(appComponentTree).toMatchSnapshot();
 })
 
+test("test to validata state for correctness", ()=> {
+  const appState = createAppWrapper().state();
+  expect(typeof(appState.pgTitle)).toBe(typeof(""));
+  expect(typeof(appState.menu)).toBe(typeof([]));
+})
+
+/*test("test to invalidata state for correctness", ()=> {
+  const appState = createAppWrapper().state();
+  //expect(typeof(appState.pgTitle) != typeof("")).toBe(true)
+  if (typeof(appState.pgTitle) != typeof(""))
+  {
+    expect().toThrow("Invalid state object");
+  }
+  //expect(typeof(appState.pgTitle)).not.toBe(typeof(""));
+  //expect(typeof(appState.menu)).not.toBe(typeof([]));
+  //console.log("typeof stuff" + !typeof([]));
+})*/
+
 appComponentTree.children[0].children.forEach(element => {
   //console.log(element);
 });
