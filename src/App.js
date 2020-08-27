@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './Header';
 import Toc from "./Toc";
+import UserContext from "./contexts/UserContext";
+import UserContextProvider from './contexts/UserContext';
 
 class App extends Component {
   state = { 
@@ -26,7 +28,9 @@ class App extends Component {
     {
       throw new TypeError("Invalid state object");
     }
-    headerComponent = <Header></Header>;
+    headerComponent = <UserContextProvider>
+      <Header></Header>
+    </UserContextProvider>;
     return ( 
       <div>
           {headerComponent}
