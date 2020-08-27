@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test that App renders without errors 1`] = `
+Object {
+  "children": Array [
+    Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                "Header",
+              ],
+              "props": Object {},
+              "type": "h1",
+            },
+          ],
+          "props": Object {},
+          "type": "center",
+        },
+      ],
+      "props": Object {},
+      "type": "div",
+    },
+    Object {
+      "children": Array [
+        "This is App",
+      ],
+      "props": Object {},
+      "type": "p",
+    },
+    Object {
+      "children": Array [
+        "Toc section",
+      ],
+      "props": Object {},
+      "type": "div",
+    },
+  ],
+  "props": Object {},
+  "type": "div",
+}
+`;
