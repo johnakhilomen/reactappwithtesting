@@ -83,6 +83,23 @@ test("test that App component doesn't render Toc", ()=> {
   expect(TocComponent.length).not.toBe(0);
 })
 
+  
+test("test that App component contains P", ()=> {
+  const app = shallow(<App></App>);
+  const countP = app.find("p");
+  expect(countP.length).toBe(2);
+})
+
+test("test p content in App component", ()=> {
+  const app = shallow(<App></App>);
+  const p1 = app.find("[id='p1']");
+  const p2 = app.find("[id='p2']");
+  expect(p1.text()).toBe("This is App");
+  expect(p2.text()).toBe("Another text");
+})
+
+
+  
 /*test("set headerText state when button is clicked", ()=> {
   const button = appWrapper.find("[className='myButton']");
   button.simulate("click");
