@@ -34,7 +34,7 @@ class App extends Component {
     return ( 
       <div>
           {headerComponent}
-          <p>This is App</p>
+          <p id="p1">This is App</p>
           <p id="p2">Another text</p>
           <Toc></Toc>
        </div>
